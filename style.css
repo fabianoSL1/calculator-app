@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
+
+* {
+	box-sizing: border-box;
+	font-family: 'Spartan', sans-serif;
+	font-weight: 700;
+	margin: 0;
+	border: 0;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.theme-1 {
+	--background-color: hsl(222,26%, 31%);
+	--background-text: hsl(0, 0%, 100%);
+	--background-teclado: hsl(223, 31%, 20%);
+	--background-screen: hsl(224, 36%, 15%);
+	--key-1-background: hsl(225, 21%, 49%);
+	--key-1-border: hsl(224, 28%, 35%);
+	--key-2-background: hsl(6, 63%, 50%);
+	--key-2-border: hsl(6, 70%, 34%);
+	--key-3-background: hsl(30, 25%, 89%);
+	--key-3-border: hsl(28, 16%, 65%);
+	--text-2-color: hsl(221, 14%, 31%);
+	--text-1-color: hsl(0, 0%, 100%);
+	--text-equals: hsl(0, 0%, 100%);
+	--position: 0;
+}
+
+.theme-2 {
+	--background-color: hsl(0, 0%, 90%);
+	--background-text: hsl(60, 10%, 19%);
+	--background-teclado: hsl(223, 31%, 20%);
+	--background-teclado: hsl(0, 5%, 81%);
+	--background-screen: hsl(0, 0%, 93%);
+	--key-1-background: hsl(185, 42%, 37%);
+	--key-1-border: hsl(185, 58%, 25%);
+	--key-2-background: hsl(25, 98%, 40%);
+	--key-2-border: hsl(25, 99%, 27%);
+	--key-3-background: hsl(45, 7%, 89%);
+	--key-3-border: hsl(35, 11%, 61%);
+	--text-1-color: hsl(0, 0%, 100%);
+	--text-2-color: hsl(60, 10%, 19%);
+	--text-equals: hsl(0, 0%, 100%);
+	--position: 1;
+}
+
+.theme-3 {
+	--background-color: hsl(268, 75%, 9%);
+	--background-text: hsl(52, 100%, 62%);
+	--background-teclado: hsl(268, 71%, 12%);
+	--background-screen: hsl(268, 71%, 12%);
+	--key-1-background: hsl(281, 89%, 26%);
+	--key-1-border: hsl(285, 91%, 52%);
+	--key-2-background: hsl(176, 100%, 44%);
+	--key-2-border: hsl(177, 92%, 70%);
+	--key-3-background: hsl(268, 47%, 21%);
+	--key-3-border: hsl(290, 70%, 36%);
+	--text-2-color: hsl(52, 100%, 62%);
+	--text-1-color: hsl(0, 0%, 100%);
+	--text-equals: hsl(198, 20%, 13%);
+	--position: 2;
+}
+
+.background {	
+	background-color: var(--background-color);
+	color: var(--background-text);
+}
+
+.background-teclado {
+	background-color: var(--background-teclado);
+}
+
+.background-screen {
+	background-color: var(--background-screen);
+}
+.key-1 {
+	background-color: var(--key-1-background);
+	border-color: var(--key-1-border) !important;
+}
+.key-2 {
+	background-color: var(--key-2-background);
+	border-color: var(--key-2-border) !important;
+}
+
+.key-3 {
+	background-color: var(--key-3-background);
+	border-color: var(--key-3-border) !important;
+}
+
+.text-1 {
+	color: var(--text-1-color);
+}
+
+.text-2 {
+	color: var(--text-2-color);
+}
+
+.text-equals {
+	color: var(--text-equals);
+}
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.label {
+	display: flex;
+	justify-content: space-evenly;
+	font-size: .8rem;
+}
+.label span {
+	flex: 1;
+	text-align: center;
+}
+.btn-theme {
+	width: 4rem;
+	height: 1.5em;
+	background: var(--background-teclado);
+	border-radius: 1em;
+	display: flex;
+	padding: .4rem;
+}
+
+.dot {
+	display: inline-block;
+	height: .8rem;
+	width: .8rem;
+	align-self: center;
+	margin-left: calc(1.2rem * var(--position));
+	border-radius: 100%;
+	background: var(--key-2-background);
+}
+
+.attribution {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	margin: 1rem;
+}
+
+.wrapper {
+	max-width: 520px;
+	margin: 1rem;
+}
+
+#resultado,
+#teclado {
+	border-radius: .5rem;
+	padding: 1.3rem;
+	margin: 1rem 0;
+}
+
+#resultado p{
+	text-align: right;
+	font-size: 48px;
+	margin: 0;
+}
+
+#teclado {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: .7rem;
+}
+
+#teclado button {
+	font-size: 28px;
+	border-radius: .5rem;
+	border-bottom: 4px solid;
+	padding: 1rem .3rem;
+	flex: 1 0 20%;
+	text-transform: uppercase;
+}
+
+@media screen and (min-width: 520px) {
+
+	#teclado {
+		gap: 1rem;
+	}
+
+	#teclado button{
+		font-size: 32px;
+	}
+}
