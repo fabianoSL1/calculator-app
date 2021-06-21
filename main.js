@@ -32,18 +32,17 @@ function changeTheme() {
 	index = next;
 }
 
-
-buttons.forEach((valor) => {
-	let button = document.createElement('button');
-	let text = valor;
+buttons.forEach((button) => {
+	let elButton = document.createElement('button');
+	let text = button;
 	var classList = ["text-2", "key-3"];
 
-	if(typeof valor != 'string') {
-		text = valor[0];
-		classList = valor[1];
+	if(typeof button != 'string') {
+		text = button[0];
+		classList = button[1];
 	}
 
-	button.append(text);
-	button.classList.add(...classList);
-	document.getElementById('teclado').append(button);
+	elButton.append(text);
+	elButton.classList.add(...classList);
+	document.getElementById('teclado').append(elButton);
 });

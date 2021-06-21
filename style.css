@@ -107,8 +107,12 @@ body {
 }
 .header {
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	justify-content: space-between;
+}
+.header p {
+	margin-left: auto;
+	margin-right: 1.5rem;
 }
 .label {
 	display: flex;
@@ -145,6 +149,10 @@ body {
 	margin: 1rem;
 }
 
+.attribution a {
+	color: inherit;
+}
+
 .wrapper {
 	max-width: 520px;
 	margin: 1rem;
@@ -171,6 +179,7 @@ body {
 }
 
 #teclado button {
+	cursor: pointer;
 	font-size: 28px;
 	border-radius: .5rem;
 	border-bottom: 4px solid;
