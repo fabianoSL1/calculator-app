@@ -1,3 +1,5 @@
+const body = document.getElementsByTagName("body")[0];
+
 const themes = [
 	{
 		theme: "theme-1",
@@ -22,15 +24,17 @@ const buttons = [
 ];
 
 var index = 0;
-var body = document.getElementsByTagName("body")[0];
 
 body.classList.add(themes[0].theme)
 
-function changeTheme() {
-	let {theme, next} = themes[index];
-	body.classList.replace(theme, themes[next].theme);
-	index = next;
-}
+document.getElementsByClassName("btn-theme")[0].addEventListener(
+	'click',
+	() => {
+		let {theme, next} = themes[index];
+		body.classList.replace(theme, themes[next].theme);
+		index = next;
+	}
+);
 
 buttons.forEach((button) => {
 	let elButton = document.createElement('button');
@@ -41,6 +45,11 @@ buttons.forEach((button) => {
 		text = button[0];
 		classList = button[1];
 	}
+
+	elButton.addEventListener(
+		'click', 
+		handleClick
+	);
 
 	elButton.append(text);
 	elButton.classList.add(...classList);
