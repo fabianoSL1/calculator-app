@@ -146,10 +146,8 @@ body {
 }
 
 .attribution {
-	position: absolute;
-	bottom: 0;
 	text-align: center;
-	margin: 1rem;
+	margin: 2rem 1rem 0;
 }
 
 .attribution a {
