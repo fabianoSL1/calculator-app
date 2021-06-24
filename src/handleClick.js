@@ -1,80 +1,48 @@
-const resultado = document.getElementById('resultado');
-
-var calculo = 0;
-
-var operacao = {
-	a: null,
-	b: null,
-	fun: null
-}
-
 const operacoes = {
-	'reset': () => {
-		resetOperacao();
-		calculo = 0;
-		resultado.textContent = '';
-	},
+    'del' : () => {
+        expressao = expressao.slice(0, -1);
+    },
 
-	'.' : () => {
-		resultado.textContent += ',';
-	},
+    '=' : () => {
+        expressao = eval(expressao);
+    },
 
-	'del' : () => {
-		resultado.textContent = resultado.textContent.slice(0, -1);
-	},
+    'reset' : () => {
+        expressao = ''
+    },
 
-	'=' : () => {
-		update();
-		resultado.textContent = calculo;
-	},
-
-	'+' : () => {
-		operacao.fun = (a, b) => a + b;
-	},
-	'-' : () => {
-		operacao.fun = (a, b) => a - b;
-	},
-	'x' : () => {
-		operacao.fun = (a, b) => a * b;
-	},
-	'/' : () => {
-		operacao.fun = (a, b) => a / b;
-	}
+    'x' : () => {
+        expressao += '*'
+    },
 }
 
-function update() {
-	if (operacao.a && operacao.b && operacao.fun) {
-		calculo = operacao.fun(operacao.a, operacao.b);
-		resetOperacao();
-	}
-}
-
-function resetOperacao() {
-	operacao.a = null;
-	operacao.b = null;
-	operacao.fun = null;
-}
+const resultado = document.getElementById('resultado');
+var expressao = '';
 
 function handleClick({target}) {
+    valor = target.textContent;
 
-	if(isNaN(target.textContent)) {
+   (operacoes[valor]) ? operacoes[valor]() : append(valor); 
 
-		let valor = resultado.textContent;
-		valor =	valor.replace(',', '.');
-		valor = parseFloat(valor);
+    exibir();
+    resize();
+    expressao = expressao.toString();
+}
 
-		(!operacao.a && target.textContent != '.') ? operacao.a = valor : operacao.b = valor;
+function exibir() {
+    let str = expressao.toString();
+    str = str.replace(new RegExp('\\*', 'g'), 'x');
+    str = str.replace(new RegExp('\\.', 'g'), ',');
+    resultado.textContent = str;
+}
 
-		operacoes[target.textContent]();
-
-		if(target.textContent != '=' && target.textContent != 'del' && target.textContent != '.')
-			resultado.textContent = '';
-		
-	} else {
-		resultado.textContent += target.textContent;
-	}
-
-	let size = 48 - resultado.textContent.length * 0.5;
+function resize() {
+   	let size = 48 - resultado.textContent.length * 0.5;
 	resultado.style.fontSize = size+'px';
 }
 
+function append(valor) {
+    if (!isNaN(expressao.slice(-1))  || !isNaN(valor)) { 
+        expressao += valor;
+    }
+}
