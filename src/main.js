@@ -23,16 +23,20 @@ const buttons = [
 	['reset',['key-1','text-1']], ['=',['key-2', 'text-equals']]
 ];
 
-var index = 0;
+if (!document.cookie)
+    document.cookie = "theme=0";
 
-body.classList.add(themes[0].theme)
+var themeCookie = document.cookie.split("=")[1];
+
+body.classList.add(themes[themeCookie].theme)
 
 document.getElementsByClassName("btn-theme")[0].addEventListener(
 	'click',
 	() => {
-		let {theme, next} = themes[index];
+		let {theme, next} = themes[themeCookie];
 		body.classList.replace(theme, themes[next].theme);
-		index = next;
+        themeCookie = next;
+		document.cookie = "theme=" + themeCookie;
 	}
 );
 
