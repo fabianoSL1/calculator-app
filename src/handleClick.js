@@ -54,6 +54,7 @@ function resetOperacao() {
 	operacao.b = null;
 	operacao.fun = null;
 }
+
 function handleClick({target}) {
 
 	if(isNaN(target.textContent)) {

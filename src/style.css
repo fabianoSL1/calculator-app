@@ -14,7 +14,7 @@ body {
 	justify-content: center;
 	flex-direction: column;
 	height: 100vh;
-	transition: ease all .5s;
+	transition: background-color 300ms, color 300ms;
 }
 
 .theme-1 {
@@ -171,7 +171,7 @@ body {
 	height: 96px;
 	font-size: 48px;
 	margin: 1rem 0;
-	transition: font-size .3s;
+	transition: font-size 300ms;
 }
 
 #teclado {
