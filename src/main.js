@@ -23,12 +23,12 @@ const buttons = [
 	['reset',['key-1','text-1']], ['=',['key-2', 'text-equals']]
 ];
 
-if (!document.cookie)
+if (!document.cookie) {
     document.cookie = "theme=0";
+}
 
 var themeCookie = document.cookie.split("=")[1];
-
-body.classList.add(themes[themeCookie].theme)
+body.classList.add(themes[themeCookie].theme);
 
 document.getElementsByClassName("btn-theme")[0].addEventListener(
 	'click',
@@ -36,7 +36,11 @@ document.getElementsByClassName("btn-theme")[0].addEventListener(
 		let {theme, next} = themes[themeCookie];
 		body.classList.replace(theme, themes[next].theme);
         themeCookie = next;
-		document.cookie = "theme=" + themeCookie;
+
+        let expires = Date.now();
+        expires += 7 * 24 * 60 * 60 * 1000;
+        expires = new Date(expires);
+        document.cookie = "theme=" + themeCookie + "; expires=" + expires +"; path=/";
 	}
 );
 
